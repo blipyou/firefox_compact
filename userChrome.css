@@ -1,0 +1,66 @@
+/* 压缩标签栏高度 */
+:root {
+  --tab-min-height: 25px !important; /* 你可以修改25px为你想要的高度 */
+  --inline-tab-padding: 0px !important;
+  --tab-block-margin: 0px !important;
+}
+
+/* 移除标签页周围的额外空隙 */
+.tabbrowser-tab {
+  min-height: var(--tab-min-height) !important;
+}
+
+.tab-stack {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+/* (可选) 让标签页变回连在一起的传统样式，而不是悬浮方块 */
+.tab-background {
+  border-radius: 0px !important;
+  margin: 0px !important;
+}
+
+/* ========================================================= */
+/*  压缩导航工具栏 (地址栏所在的那一行)                      */
+/* ========================================================= */
+
+:root {
+  /* 1. 设定地址栏输入框的高度 */
+  /* 默认大概是 32px-34px，这里建议改为 26px - 30px 之间 */
+  --urlbar-min-height: 28px !important;
+
+  /* 2. 设定地址栏容器的高度 (通常和上面保持一致或略大) */
+  --urlbar-container-height: 28px !important;
+
+  /* 3. 【关键】缩小工具栏按钮的内边距 */
+  /* 如果不改这个，旁边的刷新按钮和扩展图标会把整行撑高 */
+  /* 默认大概是 8px-10px，建议改为 4px-6px */
+  --toolbarbutton-inner-padding: 5px !important;
+  
+  /* 4. (可选) 缩小书签栏的高度，如果你开启了书签栏的话 */
+  --bookmark-block-padding: 4px !important;
+}
+
+/* 5. 修正地址栏内部文字和图标的垂直居中 */
+/* 压扁后，里面的文字可能会偏上或偏下，这里强制居中 */
+#urlbar-input-container {
+  padding-block: 0px !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+#urlbar-input {
+  /* 微调文字行高，确保不被切断 */
+  margin-bottom: 1px !important; 
+}
+
+/* 6. 缩小地址栏里的图标 (盾牌、锁等)，否则压扁后图标会顶到边框 */
+#urlbar-input-container > box,
+#urlbar-input-container > image,
+#identity-box,
+#tracking-protection-icon-container {
+  padding-inline: 2px !important; /* 减小左右间距 */
+  transform: scale(0.9); /* 稍微缩小图标体积 90% */
+}
